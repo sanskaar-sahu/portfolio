@@ -1,4 +1,4 @@
-import React from 'react'
+import {React , useEffect} from 'react'
 import ThemeToggle from '../components/ThemeToggle'
 import StarBackground from '../components/StarBackground'
 import Navbar from '../components/Navbar'
@@ -11,6 +11,11 @@ import { Toaster } from '../components/ui/Toaster'
 import { Footer } from '../components/Footer'
 
 const Home = () => {
+
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+  }, []);
+  
   return (
     <div className='min-h-screen bg-background text-foreground overflow-x-hidden'>
       {/* Theme tooggle */}

@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10); // ❌ FIXED: was screenY, should be scrollY
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -27,11 +27,12 @@ export const Navbar = () => {
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
         isScrolled
-          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-sm"
           : "py-5"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand */}
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
@@ -54,30 +55,33 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          aria-expanded={isMenuOpen}
           className="md:hidden p-2 text-foreground z-50"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Mobile Menu */}
+        {/* Mobile Navigation Menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center px-6",
             "transition-all duration-300 md:hidden",
-            isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none" // ❌ FIXED typo: opacit-100 → opacity-100
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col space-y-8">
+          <div className="flex flex-col space-y-8 text-center">
             {navItems.map((item, key) => (
               <a
                 key={key}
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)} // ❌ FIXED: was wrong usage
+                onClick={() => setIsMenuOpen(false)}
+                className="text-foreground/80 text-lg font-medium hover:text-primary transition-colors duration-300"
               >
                 {item.name}
               </a>
