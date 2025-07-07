@@ -13,9 +13,9 @@ const HeroSection = () => {
         <div className="w-full md:w-1/3 flex justify-center md:justify-start mt-16 md:mt-0">
           <div className="rounded-full overflow-hidden shadow-lg w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
             <img
-              src="/profile.jpg"
+              src="/profile.png"
               alt="Profile"
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full  "
             />
           </div>
         </div>
