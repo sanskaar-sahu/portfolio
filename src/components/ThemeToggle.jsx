@@ -35,11 +35,11 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       aria-label="Toggle Theme"
       className={cn(
-        "fixed z-[100] p-2 rounded-full bg-muted shadow-md text-foreground hover:bg-muted/70 transition duration-300",
+        "fixed z-[100] p-2 cursor-pointer rounded-full bg-muted shadow-md text-foreground hover:bg-muted/70 transition duration-300",
         // Mobile position: to the left of hamburger (typically 56px for 14 margin)
         "top-4 right-16",
         // Desktop position: regular top-right
-        "md:right-5 md:top-4"
+        "md:right-3 md:top-4"
       )}
     >
       {isDarkMode ? (
